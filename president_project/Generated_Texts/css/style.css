@@ -1,0 +1,92 @@
+#back-btn {
+	background-color: #B42033; 
+	color: white;
+	height: 38px;
+	width: 62px;
+	margin-bottom: 2px;
+}
+
+#dropleft-btn {
+	margin-top: 1vh; 
+	margin-left: 88vw; 
+	position: absolute;
+}
+
+#btn-toggle-dropdown {
+	background-color: #3C3B6E;
+}
+
+#btn_select_president {
+	background-color: #B42033;
+}
+
+#navbar_transcript_display {
+	margin-bottom: 5vh;
+}
+
+#displayed_transcript {
+	color: #CECECE; 
+	margin-left: 25px;
+}
+
+#carta {
+	width: 500px;
+	margin: auto;
+	margin-top: 5vh;
+	width: 1000px;
+	overflow: hidden;
+	margin-bottom: 50px;
+}
+
+#carta-header {
+	height: 124px;
+	margin-bottom: 40px;
+	background-size: 1000px 124px;
+}
+
+#carta-content {
+	background-repeat: repeat-y;
+	min-height: 50px;
+	margin-top: -40px;
+	padding-bottom: 40px; 
+	background-size: 1000px 124px;
+}
+
+#carta-firm {
+	text-align: right;
+	color: #6f0d0d;
+	font-size: 18px;
+	padding-left: 79px;
+	margin-bottom: 0px;
+	width: 300px;
+	font-family: cursive;
+}
+
+#carta-message {
+	text-align: left;
+	color: #6f0d0d;
+	font-size: 18px;
+	padding-left: 110px;
+	padding-bottom: 15px;
+	width: 890px;
+	margin-top: -30px;
+}
+
+#carta-footer {
+	margin-top: -20px; 
+	color: rgb(62, 45, 45); 
+	text-align: right; 
+	padding: 53px 59px 0px 0px; 
+	height: 120px; 
+	font-size: 13px; 
+	background-size: 1000px 124px;
+}
+
+#usa-footer-text {
+	text-decoration: none;
+	font-size: 18px;
+	margin-top: 3px; 
+	margin-right: 1vw; 
+	color: #6f0d0d;
+	font-family: cursive;
+}

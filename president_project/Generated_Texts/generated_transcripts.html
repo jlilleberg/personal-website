@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>title</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap');
+    </style>
+  </head>
+
+  <body style="background-color: black;">
+    <!-- Split dropleft button -->
+    <nav class="navbar navbar-dark bg-dark">
+      <button id="back-btn" type="button" class="btn btn-md back-btn" onClick="go_back();">Back</button>
+    </nav>
+    <nav class="navbar navbar-dark bg-dark">
+    <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item">
+          <p id="displayed_plot_title" class="navbar-brand mb-0 h1">Select a Transcript</p>
+        </li>
+      </ul>
+  </nav>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <div class="dropdown show">
+    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+      Select a Transcript
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#graph-1" onClick="setTranscriptText('obama')"> Barack Obama </a>
+    </div>
+  </nav>
+
+    <!-- Content -->
+    <div id="carta" style="font-family: 'Frank Ruhl Libre';">
+        <header id="carta-header" style="background-image:url('http://fotos.subefotos.com/e0139226fb6eb14f6009f4e87fa2f8c3o.png');"></header>
+        <section id="carta-content" style="background-image:url('http://fotos.subefotos.com/cc42099b19996d043583e8a4377e8aaeo.png');">
+          <div id="carta-message" style="">
+            <p id="transcript-text"></p>
+          </div>
+          <div id="carta-firm"  style=""><p id="president_name_text"></p></div></section>
+        <footer id="carta-footer" style="background-image:url(&quot;http://fotos.subefotos.com/57f6ea113ab8b27188c4f496543efb4fo.png&quot;); "><p id="usa-footer-text"></p></footer><div style="clear:both;"></div>
+    </div>
+
+  <!-- Functions -->
+  <!-- Update with texts: update both dictionaries -->
+  <script type="text/javascript">
+
+    var transcript_url_dict = {
+      'obama': "https://raw.githubusercontent.com/jlilleberg/presidential-transcripts-analysis/master/NN_transcripts/processed_transcripts/processed_transcript_Obama.txt"
+    };
+
+    var president_name_dict = {
+      'obama': "Barack Obama"
+    };
+
+    var president_title_dict = {
+      'obama' : "N"
+    }
+
+    function setTranscriptText(president) {
+
+        fetch(transcript_url_dict[president])
+          .then(response => response.text())
+          .then((data) => {
+            $($.parseHTML(data)).insertBefore("#transcript-text");
+            $('#president_name_text').text("-" + president_name_dict[president]);
+            $('#usa-footer-text').text("United States of America");
+          })
+
+          document.getElementById("displayed_plot_title").innerHTML = "Neural Network Generated Transcript for " + president_name_dict[president]
+          
+    }
+
+  </script>
+    <!-- Optional JavaScript -->
+    <script type="text/javascript">
+
+      function go_back() {
+
+        window.location.href = "../presidential_project_index.html";
+      }
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

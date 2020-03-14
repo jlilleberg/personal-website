@@ -1,0 +1,155 @@
+.nav-link, .dropdown-menu {
+	color: white;
+}
+
+.nav-pills > li.nav-item > a.dropdown-toggle:focus,
+.nav-pills > li.nav-item > a.dropdown-toggle:hover {
+	color: #262626;
+	background-color: #a6a6a6;
+	border-color: purple;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+	background-color: #a6a6a6;
+}
+
+#nav-political-era-1,
+#nav-political-era-2,
+#nav-political-era-3,
+#nav-political-era-4,
+#nav-political-era-5,
+#nav-political-era-6
+{
+	font-size: 14px;
+}
+
+.nav-btn-width {
+  width: 96%;
+}
+
+.disable-pointer {
+  pointer-events: none;
+  cursor: default;
+}
+
+.drop-drop-text{
+	font-size: 11px;
+}
+
+.iframe-plot {
+	width:100%; 
+	padding-bottom:56.25%; 
+	position:relative;
+
+}
+
+.iframe {
+	position:absolute; 
+	top:0px; 
+	left:0px; 
+    width:100%; 
+    height:100%; 
+    border: none; 
+    overflow: hidden;
+}
+
+.preloader-1 {
+  margin: 100px auto 0;
+  width: 255px;
+  height: 12px;
+  margin-left: 500px;
+}
+
+.loading-div {
+  color: black;
+  margin: 5px 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 50px;
+  letter-spacing: 2px;
+}
+
+.preloader-1 .line {
+  width: 3px;
+  height: 36px;
+  background: black;
+  margin: 0 1px;
+  display: inline-block;
+  animation: opacity-1 1000ms infinite ease-in-out;
+}
+
+.animate-opacity-1 {
+    transition: opacity .5s;
+    opacity: 1;
+}
+
+.animate-opacity-0 {
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+.animate-opacity-0-instant {
+    transition: opacity 0s;
+    opacity: 0;
+}
+
+.preloader-1 .line-1 { animation-delay: 2800ms; }
+.preloader-1 .line-2 { animation-delay: 2600ms; }
+.preloader-1 .line-3 { animation-delay: 2400ms; }
+.preloader-1 .line-4 { animation-delay: 2200ms; }
+.preloader-1 .line-5 { animation-delay: 2000ms; }
+.preloader-1 .line-6 { animation-delay: 1800ms; }
+.preloader-1 .line-7 { animation-delay: 1600ms; }
+.preloader-1 .line-8 { animation-delay: 1400ms; }
+.preloader-1 .line-9 { animation-delay: 1200ms; }
+.preloader-1 .line-10 { animation-delay: 1000ms; }
+.preloader-1 .line-11 { animation-delay: 8000ms; }
+.preloader-1 .line-12 { animation-delay: 600ms; }
+.preloader-1 .line-13 { animation-delay: 400ms; }
+.preloader-1 .line-14 { animation-delay: 200ms; }
+.preloader-1 .line-15 { animation-delay: 200ms; }
+.preloader-1 .line-16 { animation-delay: 400ms; }
+.preloader-1 .line-17 { animation-delay: 600ms; }
+.preloader-1 .line-18 { animation-delay: 800ms; }
+.preloader-1 .line-19 { animation-delay: 1000ms; }
+.preloader-1 .line-20 { animation-delay: 1200ms; }
+.preloader-1 .line-21 { animation-delay: 1400ms; }
+.preloader-1 .line-22 { animation-delay: 1600ms; }
+.preloader-1 .line-23 { animation-delay: 1800ms; }
+.preloader-1 .line-24 { animation-delay: 2000ms; }
+.preloader-1 .line-25 { animation-delay: 2200ms; }
+.preloader-1 .line-26 { animation-delay: 2400ms; }
+.preloader-1 .line-27 { animation-delay: 2600ms; }
+.preloader-1 .line-28 { animation-delay: 2800ms; }
+
+@keyframes opacity-1 { 
+  0% { 
+    opacity: 1;
+  }
+  50% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }  
+}
+
+@keyframes opacity-2 { 
+  0% { 
+    opacity: 1;
+    height: 15px;
+  }
+  50% { 
+    opacity: 0;
+    height: 12px;
+  }
+  100% { 
+    opacity: 1;
+    height: 15px;
+  }  
+}
+
+
+
+

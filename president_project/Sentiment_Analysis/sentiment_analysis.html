@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <button id="back-btn" type="button" class="btn btn-md back-btn" onClick="back_btn();">Back</button>
+  </nav>
+  <nav class="navbar navbar-dark bg-dark">
+    <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item">
+          <p id="displayed_plot_title" class="navbar-brand mb-0 h1">Select a Plot</p>
+        </li>
+      </ul>
+  </nav>
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Select a Plot</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                <li class="dropdown">
+                  <a class="dropdown-item">First Party System (1792–1824)</a>
+                  <ul class="dropdown-menu">
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">George Washington</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_george_washington');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_george_washington');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">John Adams</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_john_adams');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_john_adams');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Thomas Jefferson</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_thomas_jefferson');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_thomas_jefferson');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">James Madison</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_james_madison');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_james_madison');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">James Monroe</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_james_monroe');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_james_monroe');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">John Quincy Adams</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_john_quincy_adams');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_john_quincy_adams');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">All Presidents</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_presidents_1');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_presidents_1');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Political Parties</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_party_1');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_party_1');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-item">Second Party System (1828–1854)</a>
+                  <ul class="dropdown-menu">
+                    
+                    <li class="dropdown">
+                      <a class="dropdown-item">John Quincy Adams</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_john_quincy_adams');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_john_quincy_adams');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Andrew Jackson</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_andrew_jackson');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_andrew_jackson');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Martin Van Buren</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_martin_van_buren');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_martin_van_buren');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">William Harrison</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_william_harrison');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_william_harrison');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">John Tyler</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_john_tyler');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_john_tyler');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">James K. Polk</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_james_polk');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_james_polk');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Zachary Taylor</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_zachary_taylor');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_zachary_taylor');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Millard Fillmore</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_millard_fillmore');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_millard_fillmore');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Abraham Lincoln</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_abraham_lincoln');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_abraham_lincoln');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">All Presidents</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_presidents_2');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_presidents_2');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Political Parties</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_party_2');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_party_2');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-item">Third Party System (1854–1895)</a>
+                  <ul class="dropdown-menu">
+                    
+                    <li class="dropdown">
+                      <a class="dropdown-item">Franklin Pierce</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_franklin_pierce');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_franklin_pierce');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">James Buchanan</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_james_buchanan');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_james_buchanan');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Abraham Lincoln</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_abraham_lincoln');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_abraham_lincoln');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Andrew Johnson</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_andrew_johnson');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_andrew_johnson');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Ulysses S. Grant</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_ulysses_s_grant');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_ulysses_s_grant');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Rutherford B. Hayes</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_rutherford_b_hayes');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_rutherford_b_hayes');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">James A. Garfield</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_james_garfield');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_james_garfield');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Chester A. Arthur</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_chester_arthur');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_chester_arthur');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Grover Cleveland</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_grover_cleveland');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_grover_cleveland');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Benjamin Harrison</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_benjamin_harrison');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_benjamin_harrison');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">All Presidents</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_presidents_3');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_presidents_3');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Political Parties</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_party_3');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_party_3');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-item">Fourth Party System (1896–1932)</a>
+                  <ul class="dropdown-menu">
+                    
+                    <li class="dropdown">
+                      <a class="dropdown-item">William McKinley</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_william_mckinley');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_william_mckinley');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">William Taft</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_william_taft');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_william_taft');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Woodrow Wilson</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_woodrow_wilson');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_woodrow_wilson');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Warren G. Harding</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_warren_g_harding');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_warren_g_harding');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Calvin Coolidge</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_calvin_coolidge');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_calvin_coolidge');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Herbert Hoover</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_herbert_hoover');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_herbert_hoover');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Theodore Roosevelt</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_theodore_roosevelt');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_theodore_roosevelt');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">All Presidents</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_presidents_4');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_presidents_4');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Political Parties</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_party_4');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_party_4');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-item">Fifth Party System (1932–1964)</a>
+                  <ul class="dropdown-menu">
+                    
+                    <li class="dropdown">
+                      <a class="dropdown-item">Franklin D. Roosevelt</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_franklin_roosevelt');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_franklin_roosevelt');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Harry S. Truman</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_harry_truman');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_harry_truman');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Dwight D. Eisenhower</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_dwight_eisenhower');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_dwight_eisenhower');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">John F. Kennedy</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_john_f_kennedy');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_john_f_kennedy');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Lyndon B. Johnson</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_lyndon_b_johnson');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_lyndon_b_johnson');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Richard M. Nixon</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_richard_m_nixon');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_richard_m_nixon');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">All Presidents</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_presidents_5');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_presidents_5');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Political Parties</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_party_5');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_party_5');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-item">Sixth Party System (1964–present)</a>
+                  <ul class="dropdown-menu">
+                    
+                    <li class="dropdown">
+                      <a class="dropdown-item">Lyndon B. Johnson</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_lyndon_b_johnson');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_lyndon_b_johnson');">Subjectivity</a></li>Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Richard M. Nixon</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_richard_m_nixon');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_richard_m_nixon');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Gerald Ford</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_gerald_ford');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_gerald_ford');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Jimmy Carter</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_jimmy_carter');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_jimmy_carter');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Ronald Raegan</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_ronald_raegan');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_ronald_raegan');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">George H. W. Bush</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_george_h_w_bush');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_george_h_w_bush');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Bill Clinton</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_bill_clinton');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_bill_clinton');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">George W. Bush</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_george_w_bush');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_george_w_bush');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Barack Obama</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_barack_obama');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_barack_obama');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Donald Trump</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_donald_trump');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_donald_trump');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">All Presidents</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_presidents_6');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_presidents_6');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-item">Political Parties</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onClick="update_iframe_src('pol_party_6');">Polarity</a></li>
+                        <li><a class="dropdown-item" onClick="update_iframe_src('subj_party_6');">Subjectivity</a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+                <li> <a class="dropdown-item" onClick="update_iframe_src('pol_vs_subj');">Presidents: Polarity vs Subjectivity</a> </li>
+
+              </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<iframe id="iframe" src='about:blank' style="width: 100vw; height: 85vh;"></iframe>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+
+    var src_dict = {
+
+      "pol_abraham_lincoln" : "plotly_html/president_htmls/polarity/Abraham Lincoln_polarity_plot.html",
+      "pol_andrew_jackson" : "plotly_html/president_htmls/polarity/Andrew Jackson_polarity_plot.html",
+      "pol_andrew_johnson" : "plotly_html/president_htmls/polarity/Andrew Johnson_polarity_plot.html",
+      "pol_barack_obama" : "plotly_html/president_htmls/polarity/Barack Obama_polarity_plot.html",
+      "pol_benjamin_harrison" : "plotly_html/president_htmls/polarity/Benjamin Harrison_polarity_plot.html",
+      "pol_bill_clinton" : "plotly_html/president_htmls/polarity/Bill Clinton_polarity_plot.html",
+      "pol_calvin_coolidge" : "plotly_html/president_htmls/polarity/Calvin Coolidge_polarity_plot.html",
+      "pol_chester_arthur" : "plotly_html/president_htmls/polarity/Chester A. Arthur_polarity_plot.html",
+      "pol_donald_trump" : "plotly_html/president_htmls/polarity/Donald Trump_polarity_plot.html",
+      "pol_dwight_eisenhower" : "plotly_html/president_htmls/polarity/Dwight D. Eisenhower_polarity_plot.html",
+      "pol_franklin_roosevelt" : "plotly_html/president_htmls/polarity/Franklin D. Roosevelt_polarity_plot.html",
+      "pol_franklin_pierce" : "plotly_html/president_htmls/polarity/Franklin Pierce_polarity_plot.html",
+      "pol_george_h_w_bush" : "plotly_html/president_htmls/polarity/George H. W. Bush_polarity_plot.html",
+      "pol_george_w_bush" : "plotly_html/president_htmls/polarity/George W. Bush_polarity_plot.html",
+      "pol_george_washington" : "plotly_html/president_htmls/polarity/George Washington_polarity_plot.html",
+      "pol_gerald_ford" : "plotly_html/president_htmls/polarity/Gerald Ford_polarity_plot.html",
+      "pol_grover_cleveland" : "plotly_html/president_htmls/polarity/Grover Cleveland_polarity_plot.html",
+      "pol_harry_truman" : "plotly_html/president_htmls/polarity/Harry S. Truman_polarity_plot.html",
+      "pol_herbert_hoover" : "plotly_html/president_htmls/polarity/Herbert Hoover_polarity_plot.html",
+      "pol_james_garfield" : "plotly_html/president_htmls/polarity/James A. Garfield_polarity_plot.html",
+      "pol_james_buchanan" : "plotly_html/president_htmls/polarity/James Buchanan_polarity_plot.html",
+      "pol_james_polk" : "plotly_html/president_htmls/polarity/James K. Polk_polarity_plot.html",
+      "pol_james_madison" : "plotly_html/president_htmls/polarity/James Madison_polarity_plot.html",
+      "pol_james_monroe" : "plotly_html/president_htmls/polarity/James Monroe_polarity_plot.html",
+      "pol_jimmy_carter" : "plotly_html/president_htmls/polarity/Jimmy Carter_polarity_plot.html",
+      "pol_john_adams" : "plotly_html/president_htmls/polarity/John Adams_polarity_plot.html",
+      "pol_john_f_kennedy" : "plotly_html/president_htmls/polarity/John F. Kennedy_polarity_plot.html",
+      "pol_john_quincy_adams" : "plotly_html/president_htmls/polarity/John Quincy Adams_polarity_plot.html",
+      "pol_john_tyler" : "plotly_html/president_htmls/polarity/John Tyler_polarity_plot.html",
+      "pol_lyndon_b_johnson" : "plotly_html/president_htmls/polarity/Lyndon B. Johnson_polarity_plot.html",
+      "pol_martin_van_buren" : "plotly_html/president_htmls/polarity/Martin Van Buren_polarity_plot.html",
+      "pol_millard_fillmore" : "plotly_html/president_htmls/polarity/Millard Fillmore_polarity_plot.html",
+      "pol_richard_m_nixon" : "plotly_html/president_htmls/polarity/Richard M. Nixon_polarity_plot.html",
+      "pol_ronald_raegan" : "plotly_html/president_htmls/polarity/Ronald Reagan_polarity_plot.html",
+      "pol_rutherford_b_hayes" : "plotly_html/president_htmls/polarity/Rutherford B. Hayes_polarity_plot.html",
+      "pol_theodore_roosevelt" : "plotly_html/president_htmls/polarity/Theodore Roosevelt_polarity_plot.html",
+      "pol_thomas_jefferson" : "plotly_html/president_htmls/polarity/Thomas Jefferson_polarity_plot.html",
+      "pol_ulysses_s_grant" : "plotly_html/president_htmls/polarity/Ulysses S. Grant_polarity_plot.html",
+      "pol_warren_g_harding" : "plotly_html/president_htmls/polarity/Warren G. Harding_polarity_plot.html",
+      "pol_william_harrison" : "plotly_html/president_htmls/polarity/William Harrison_polarity_plot.html",
+      "pol_william_mckinley" : "plotly_html/president_htmls/polarity/William McKinley_polarity_plot.html",
+      "pol_william_taft" : "plotly_html/president_htmls/polarity/William Taft_polarity_plot.html",
+      "pol_woodrow_wilson" : "plotly_html/president_htmls/polarity/Woodrow Wilson_polarity_plot.html",
+      "pol_zachary_taylor" : "plotly_html/president_htmls/polarity/Zachary Taylor_polarity_plot.html",
+
+      "subj_abraham_lincoln" : "plotly_html/president_htmls/subjectivity/Abraham Lincoln_subjectivity_plot.html",
+      "subj_andrew_jackson" : "plotly_html/president_htmls/subjectivity/Andrew Jackson_subjectivity_plot.html",
+      "subj_andrew_johnson" : "plotly_html/president_htmls/subjectivity/Andrew Johnson_subjectivity_plot.html",
+      "subj_barack_obama" : "plotly_html/president_htmls/subjectivity/Barack Obama_subjectivity_plot.html",
+      "subj_benjamin_harrison" : "plotly_html/president_htmls/subjectivity/Benjamin Harrison_subjectivity_plot.html",
+      "subj_bill_clinton" : "plotly_html/president_htmls/subjectivity/Bill Clinton_subjectivity_plot.html",
+      "subj_calvin_coolidge" : "plotly_html/president_htmls/subjectivity/Calvin Coolidge_subjectivity_plot.html",
+      "subj_chester_arthur" : "plotly_html/president_htmls/subjectivity/Chester A. Arthur_subjectivity_plot.html",
+      "subj_donald_trump" : "plotly_html/president_htmls/subjectivity/Donald Trump_subjectivity_plot.html",
+      "subj_dwight_eisenhower" : "plotly_html/president_htmls/subjectivity/Dwight D. Eisenhower_subjectivity_plot.html",
+      "subj_franklin_roosevelt" : "plotly_html/president_htmls/subjectivity/Franklin D. Roosevelt_subjectivity_plot.html",
+      "subj_franklin_pierce" : "plotly_html/president_htmls/subjectivity/Franklin Pierce_subjectivity_plot.html",
+      "subj_george_h_w_bush" : "plotly_html/president_htmls/subjectivity/George H. W. Bush_subjectivity_plot.html",
+      "subj_george_w_bush" : "plotly_html/president_htmls/subjectivity/George W. Bush_subjectivity_plot.html",
+      "subj_george_washington" : "plotly_html/president_htmls/subjectivity/George Washington_subjectivity_plot.html",
+      "subj_gerald_ford" : "plotly_html/president_htmls/subjectivity/Gerald Ford_subjectivity_plot.html",
+      "subj_grover_cleveland" : "plotly_html/president_htmls/subjectivity/Grover Cleveland_subjectivity_plot.html",
+      "subj_harry_truman" : "plotly_html/president_htmls/subjectivity/Harry S. Truman_subjectivity_plot.html",
+      "subj_herbert_hoover" : "plotly_html/president_htmls/subjectivity/Herbert Hoover_subjectivity_plot.html",
+      "subj_james_garfield" : "plotly_html/president_htmls/subjectivity/James A. Garfield_subjectivity_plot.html",
+      "subj_james_buchanan" : "plotly_html/president_htmls/subjectivity/James Buchanan_subjectivity_plot.html",
+      "subj_james_polk" : "plotly_html/president_htmls/subjectivity/James K. Polk_subjectivity_plot.html",
+      "subj_james_madison" : "plotly_html/president_htmls/subjectivity/James Madison_subjectivity_plot.html",
+      "subj_james_monroe" : "plotly_html/president_htmls/subjectivity/James Monroe_subjectivity_plot.html",
+      "subj_jimmy_carter" : "plotly_html/president_htmls/subjectivity/Jimmy Carter_subjectivity_plot.html",
+      "subj_john_adams" : "plotly_html/president_htmls/subjectivity/John Adams_subjectivity_plot.html",
+      "subj_john_f_kennedy" : "plotly_html/president_htmls/subjectivity/John F. Kennedy_subjectivity_plot.html",
+      "subj_john_quincy_adams" : "plotly_html/president_htmls/subjectivity/John Quincy Adams_subjectivity_plot.html",
+      "subj_john_tyler" : "plotly_html/president_htmls/subjectivity/John Tyler_subjectivity_plot.html",
+      "subj_lyndon_b_johnson" : "plotly_html/president_htmls/subjectivity/Lyndon B. Johnson_subjectivity_plot.html",
+      "subj_martin_van_buren" : "plotly_html/president_htmls/subjectivity/Martin Van Buren_subjectivity_plot.html",
+      "subj_millard_fillmore" : "plotly_html/president_htmls/subjectivity/Millard Fillmore_subjectivity_plot.html",
+      "subj_richard_m_nixon" : "plotly_html/president_htmls/subjectivity/Richard M. Nixon_subjectivity_plot.html",
+      "subj_ronald_raegan" : "plotly_html/president_htmls/subjectivity/Ronald Reagan_subjectivity_plot.html",
+      "subj_rutherford_b_hayes" : "plotly_html/president_htmls/subjectivity/Rutherford B. Hayes_subjectivity_plot.html",
+      "subj_theodore_roosevelt" : "plotly_html/president_htmls/subjectivity/Theodore Roosevelt_subjectivity_plot.html",
+      "subj_thomas_jefferson" : "plotly_html/president_htmls/subjectivity/Thomas Jefferson_subjectivity_plot.html",
+      "subj_ulysses_s_grant" : "plotly_html/president_htmls/subjectivity/Ulysses S. Grant_subjectivity_plot.html",
+      "subj_warren_g_harding" : "plotly_html/president_htmls/subjectivity/Warren G. Harding_subjectivity_plot.html",
+      "subj_william_harrison" : "plotly_html/president_htmls/subjectivity/William Harrison_subjectivity_plot.html",
+      "subj_william_mckinley" : "plotly_html/president_htmls/subjectivity/William McKinley_subjectivity_plot.html",
+      "subj_william_taft" : "plotly_html/president_htmls/subjectivity/William Taft_subjectivity_plot.html",
+      "subj_woodrow_wilson" : "plotly_html/president_htmls/subjectivity/Woodrow Wilson_subjectivity_plot.html",
+      "subj_zachary_taylor" : "plotly_html/president_htmls/subjectivity/Zachary Taylor_subjectivity_plot.html",
+
+      "pol_party_1" : "plotly_html/party_htmls/political_era_1_polarity_plot.html",
+      "subj_party_1" : "plotly_html/party_htmls/political_era_1_subjectivity_plot.html",
+      "pol_party_2" : "plotly_html/party_htmls/political_era_2_polarity_plot.html",
+      "subj_party_2" : "plotly_html/party_htmls/political_era_2_subjectivity_plot.html",
+      "pol_party_3" : "plotly_html/party_htmls/political_era_3_polarity_plot.html",
+      "subj_party_3" : "plotly_html/party_htmls/political_era_3_subjectivity_plot.html",
+      "pol_party_4" : "plotly_html/party_htmls/political_era_4_polarity_plot.html",
+      "subj_party_4" : "plotly_html/party_htmls/political_era_4_subjectivity_plot.html",
+      "pol_party_5" : "plotly_html/party_htmls/political_era_5_polarity_plot.html",
+      "subj_party_5" : "plotly_html/party_htmls/political_era_5_subjectivity_plot.html",
+      "pol_party_6" : "plotly_html/party_htmls/political_era_6_polarity_plot.html",
+      "subj_party_6" : "plotly_html/party_htmls/political_era_6_subjectivity_plot.html",
+
+      "pol_presidents_1" : "plotly_html/pol_era_htmls/political_era_1_presidents_polarity_plot.html",
+      "subj_presidents_1" : "plotly_html/pol_era_htmls/political_era_1_presidents_subjectivity_plot.html",
+      "pol_presidents_2" : "plotly_html/pol_era_htmls/political_era_2_presidents_polarity_plot.html",
+      "subj_presidents_2" : "plotly_html/pol_era_htmls/political_era_2_presidents_subjectivity_plot.html",
+      "pol_presidents_3" : "plotly_html/pol_era_htmls/political_era_3_presidents_polarity_plot.html",
+      "subj_presidents_3" : "plotly_html/pol_era_htmls/political_era_3_presidents_subjectivity_plot.html",
+      "pol_presidents_4" : "plotly_html/pol_era_htmls/political_era_4_presidents_polarity_plot.html",
+      "subj_presidents_4" : "plotly_html/pol_era_htmls/political_era_4_presidents_subjectivity_plot.html",
+      "pol_presidents_5" : "plotly_html/pol_era_htmls/political_era_5_presidents_polarity_plot.html",
+      "subj_presidents_5" : "plotly_html/pol_era_htmls/political_era_6_presidents_subjectivity_plot.html",
+      "pol_presidents_6" : "plotly_html/pol_era_htmls/political_era_6_presidents_polarity_plot.html",
+      "subj_presidents_6" : "plotly_html/pol_era_htmls/political_era_6_presidents_subjectivity_plot.html",
+
+      "pol_vs_subj": "plotly_html/sentiment_analysis_scatterplot.html"
+    }
+
+    var title_dict = {
+
+      "pol_abraham_lincoln" : "Polarity of Abraham Lincoln over time",
+      "pol_andrew_jackson" : "Polarity of Andrew Jackson over time",
+      "pol_andrew_johnson" : "Polarity of Andrew Johnson over time",
+      "pol_barack_obama" : "Polarity of Barack Obama over time",
+      "pol_benjamin_harrison" : "Polarity of Benjamin Harrison over time",
+      "pol_bill_clinton" : "Polarity of Bill Clinton over time",
+      "pol_calvin_coolidge" : "Polarity of Calvin Coolidge over time",
+      "pol_chester_arthur" : "Polarity of Chester A. Arthur over time",
+      "pol_donald_trump" : "Polarity of Donald Trump over time",
+      "pol_dwight_eisenhower" : "Polarity of Dwight D. Eisenhower over time",
+      "pol_franklin_roosevelt" : "Polarity of Franklin D. Roosevelt over time",
+      "pol_franklin_pierce" : "Polarity of Franklin Pierce over time",
+      "pol_george_h_w_bush" : "Polarity of George H. W. Bush over time",
+      "pol_george_w_bush" : "Polarity of George W. Bush over time",
+      "pol_george_washington" : "Polarity of George Washington over time",
+      "pol_gerald_ford" : "Polarity of Gerald Ford over time",
+      "pol_grover_cleveland" : "Polarity of Grover Cleveland over time",
+      "pol_harry_truman" : "Polarity of Harry S. Truman over time",
+      "pol_herbert_hoover" : "Polarity of Herbert Hoover over time",
+      "pol_james_garfield" : "Polarity of James A. Garfield over time",
+      "pol_james_buchanan" : "Polarity of James Buchanan over time",
+      "pol_james_polk" : "Polarity of James K. Polk over time",
+      "pol_james_madison" : "Polarity of James Madison over time",
+      "pol_james_monroe" : "Polarity of James Monroe over time",
+      "pol_jimmy_carter" : "Polarity of Jimmy Carter over time",
+      "pol_john_adams" : "Polarity of John Adams over time",
+      "pol_john_f_kennedy" : "Polarity of John F. Kennedy over time",
+      "pol_john_quincy_adams" : "Polarity of John Quincy Adams over time",
+      "pol_john_tyler" : "Polarity of John Tyler over time",
+      "pol_lyndon_b_johnson" : "Polarity of Lyndon B. Johnson over time",
+      "pol_martin_van_buren" : "Polarity of Martin Van Buren over time",
+      "pol_millard_fillmore" : "Polarity of Millard Fillmore over time",
+      "pol_richard_m_nixon" : "Polarity of Richard M. Nixon over time",
+      "pol_ronald_raegan" : "Polarity of Ronald Reagan over time",
+      "pol_rutherford_b_hayes" : "Polarity of Rutherford B. Hayes over time",
+      "pol_theodore_roosevelt" : "Polarity of Theodore Roosevelt over time",
+      "pol_thomas_jefferson" : "Polarity of Thomas Jefferson over time",
+      "pol_ulysses_s_grant" : "Polarity of Ulysses S. Grant over time",
+      "pol_warren_g_harding" : "Polarity of Warren G. Harding over time",
+      "pol_william_harrison" : "Polarity of William Harrison over time",
+      "pol_william_mckinley" : "Polarity of William McKinley over time",
+      "pol_william_taft" : "Polarity of William Taft over time",
+      "pol_woodrow_wilson" : "Polarity of Woodrow Wilson over time",
+      "pol_zachary_taylor" : "Polarity of Zachary Taylor over time",
+
+      "subj_abraham_lincoln" : "Subjectivity of Abraham Lincoln over time",
+      "subj_andrew_jackson" : "Subjectivity of Andrew Jackson over time",
+      "subj_andrew_johnson" : "Subjectivity of Andrew Johnson over time",
+      "subj_barack_obama" : "Subjectivity of Barack Obama over time",
+      "subj_benjamin_harrison" : "Subjectivity of Benjamin Harrison over time",
+      "subj_bill_clinton" : "Subjectivity of Bill Clinton over time",
+      "subj_calvin_coolidge" : "Subjectivity of Calvin Coolidge over time",
+      "subj_chester_arthur" : "Subjectivity of Chester A. Arthur over time",
+      "subj_donald_trump" : "Subjectivity of Donald Trump over time",
+      "subj_dwight_eisenhower" : "Subjectivity of Dwight D. Eisenhower over time",
+      "subj_franklin_roosevelt" : "Subjectivity of Franklin D. Roosevelt over time",
+      "subj_franklin_pierce" : "Subjectivity of Franklin Pierce over time",
+      "subj_george_h_w_bush" : "Subjectivity of George H. W. Bush over time",
+      "subj_george_w_bush" : "Subjectivity of George W. Bush over time",
+      "subj_george_washington" : "Subjectivity of George Washington over time",
+      "subj_gerald_ford" : "Subjectivity of Gerald Ford over time",
+      "subj_grover_cleveland" : "Subjectivity of Grover Cleveland over time",
+      "subj_harry_truman" : "Subjectivity of Harry S. Truman over time",
+      "subj_herbert_hoover" : "Subjectivity of Herbert Hoover over time",
+      "subj_james_garfield" : "Subjectivity of James A. Garfield over time",
+      "subj_james_buchanan" : "Subjectivity of James Buchanan over time",
+      "subj_james_subjk" : "Subjectivity of James K. Polk over time",
+      "subj_james_madison" : "Subjectivity of James Madison over time",
+      "subj_james_monroe" : "Subjectivity of James Monroe over time",
+      "subj_jimmy_carter" : "Subjectivity of Jimmy Carter over time",
+      "subj_john_adams" : "Subjectivity of John Adams over time",
+      "subj_john_f_kennedy" : "Subjectivity of John F. Kennedy over time",
+      "subj_john_quincy_adams" : "Subjectivity of John Quincy Adams over time",
+      "subj_john_tyler" : "Subjectivity of John Tyler over time",
+      "subj_lyndon_b_johnson" : "Subjectivity of Lyndon B. Johnson over time",
+      "subj_martin_van_buren" : "Subjectivity of Martin Van Buren over time",
+      "subj_millard_fillmore" : "Subjectivity of Millard Fillmore over time",
+      "subj_richard_m_nixon" : "Subjectivity of Richard M. Nixon over time",
+      "subj_ronald_raegan" : "Subjectivity of Ronald Reagan over time",
+      "subj_rutherford_b_hayes" : "Subjectivity of Rutherford B. Hayes over time",
+      "subj_theodore_roosevelt" : "Subjectivity of Theodore Roosevelt over time",
+      "subj_thomas_jefferson" : "Subjectivity of Thomas Jefferson over time",
+      "subj_ulysses_s_grant" : "Subjectivity of Ulysses S. Grant over time",
+      "subj_warren_g_harding" : "Subjectivity of Warren G. Harding over time",
+      "subj_william_harrison" : "Subjectivity of William Harrison over time",
+      "subj_william_mckinley" : "Subjectivity of William McKinley over time",
+      "subj_william_taft" : "Subjectivity of William Taft over time",
+      "subj_woodrow_wilson" : "Subjectivity of Woodrow Wilson over time",
+      "subj_zachary_taylor" : "Subjectivity of Zachary Taylor over time",
+
+      "pol_party_1" : "Polarity of First Party System (1792–1824) over time",
+      "subj_party_1" : "Subjectivity of First Party System (1792–1824) over time",
+      "pol_party_2" : "Polarity of Second Party System (1828–1854) over time",
+      "subj_party_2" : "Subjectivity of Second Party System (1828–1854) over time",
+      "pol_party_3" : "Polarity of Third Party System (1854–1895) over time",
+      "subj_party_3" : "Subjectivity of Third Party System (1854–1895) over time",
+      "pol_party_4" : "Polarity of Fourth Party System (1896–1932) over time",
+      "subj_party_4" : "Subjectivity of Fourth Party System (1896–1932) over time",
+      "pol_party_5" : "Polarity of Fifth Party System (1932–1964) over time",
+      "subj_party_5" : "Subjectivity of Fifth Party System (1932–1964) over time",
+      "pol_party_6" : "Polarity of Sixth Party System (1964–present) over time",
+      "subj_party_6" : "Subjectivity of Sixth Party System (1964–present) over time",
+
+      "pol_presidents_1" : "Polarity of Presidents during the First Party System (1792–1824) over time",
+      "subj_presidents_1" : "Subjectivity of Presidents during the First Party System (1792–1824) over time",
+      "pol_presidents_2" : "Polarity of Presidents during the Second Party System (1828–1854) over time",
+      "subj_presidents_2" : "Subjectivity of Presidents during the Second Party System (1828–1854) over time",
+      "pol_presidents_3" : "Polarity of Presidents during the Third Party System (1854–1895) over time",
+      "subj_presidents_3" : "Subjectivity of Presidents during the Third Party System (1854–1895) over time",
+      "pol_presidents_4" : "Polarity of Presidents during the Fourth Party System (1896–1932) over time",
+      "subj_presidents_4" : "Subjectivity of Presidents during the Fourth Party System (1896–1932) over time",
+      "pol_presidents_5" : "Polarity of Presidents during the Fifth Party System (1932–1964) over time",
+      "subj_presidents_5" : "Subjectivity of Presidents during the Fifth Party System (1932–1964) over time",
+      "pol_presidents_6" : "Polarity of Presidents during the Sixth Party System (1964–present) over time",
+      "subj_presidents_6" : "Subjectivity of Presidents during the Sixth Party System (1964–present) over time",
+
+      "pol_vs_subj": "Polarity vs Subjectivity"
+    }
+
+    /* Back Button */
+    function back_btn() {
+      window.location.href = "../presidential_project_index.html";
+    }
+
+    /* Update iframe source */
+    function update_iframe_src(key){
+      document.getElementById('displayed_plot_title').innerHTML = title_dict[key];
+      document.getElementById("iframe").src = src_dict[key];
+    }
+
+    /* Multilevel Dropdown */
+    $('.dropdown-menu > .dropdown > a').addClass('dropdown-toggle');
+
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+      if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+      }
+      var $subMenu = $(this).next(".dropdown-menu");
+      $subMenu.toggleClass('show');
+      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+        $('.dropdown-menu > .dropdown .show').removeClass("show");
+      });
+      return false;
+    });
+  </script>
+</body>
+
+</html>

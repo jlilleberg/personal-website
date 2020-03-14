@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <button id="back-btn" type="button" class="btn btn-md back-btn" onClick="back_btn();">Back</button>
+  </nav>
+  <nav class="navbar navbar-dark bg-dark">
+    <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item">
+          <p id="displayed_plot_title" class="navbar-brand mb-0 h1">Data Exploration Interactive Visualizations</p>
+        </li>
+      </ul>
+  </nav>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <div class="dropdown show">
+    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+      Select a Plot
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#graph-1">Number of words per president</a>
+      <a class="dropdown-item" href="#graph-2">Number of unique words per president</a>
+      <a class="dropdown-item" href="#graph-3">Average speech length per president</a>
+      <a class="dropdown-item" href="#graph-4">Number of speeches per president</a>
+      <a class="dropdown-item" href="#graph-5">Number of speeches per month</a>
+      <a class="dropdown-item" href="#graph-6">Number of speeches per weekday</a>
+      <a class="dropdown-item" href="#graph-7">Number of speeches per day of month</a>
+    </div>
+  </nav>
+
+  <!-- about:blank-->
+  <div class="container">
+
+    <div id="graph-1" class="graph-container" style="margin-top: 5vh;">
+      <div class="row">
+        <iframe id="iframe" src='data_exploration/de_word_count.html'></iframe>
+      </div>
+    </div>
+
+    <div id="graph-2" class="graph-container">
+      <div class="row">
+        <iframe id="iframe" src='data_exploration/de_unique_word_count.html'></iframe>
+      </div>
+    </div>
+
+    <div id="graph-3" class="graph-container">
+      <div class="row">
+        <iframe id="iframe" src='data_exploration/de_avg_speech_length.html'></iframe>
+      </div>
+    </div>
+
+    <div id="graph-4" class="graph-container">
+      <div class="row">
+        <iframe id="iframe" src='data_exploration/de_speech_count.html'></iframe>
+      </div>
+    </div>
+
+    <div id="graph-5" class="graph-container">
+      <div class="row">
+        <iframe id="iframe" src='data_exploration/de_speech_count_month.html'></iframe>
+      </div>
+    </div>
+
+    <div id="graph-6" class="graph-container">
+      <div class="row">
+        <iframe id="iframe" src='data_exploration/de_speech_count_dayofweek.html'></iframe>
+      </div>
+    </div>
+
+    <div id="graph-7" class="graph-container">
+      <div class="row">
+        <iframe id="iframe" src='data_exploration/de_speech_count_dayofmonth.html'></iframe>
+      </div>
+    </div>
+
+  </div>
+ 
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+
+    $(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 500);
+});
+
+    /* Back Button */
+    function back_btn() {
+      window.location.href = "../presidential_project_index.html";
+    }
+
+    /* Update iframe source */
+    function update_iframe_src(key){
+      document.getElementById('displayed_plot_title').innerHTML = title_dict[key];
+      document.getElementById("iframe").src = src_dict[key];
+    }
+
+    /* Multilevel Dropdown */
+    $('.dropdown-menu > .dropdown > a').addClass('dropdown-toggle');
+
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+      if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+      }
+      var $subMenu = $(this).next(".dropdown-menu");
+      $subMenu.toggleClass('show');
+      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+        $('.dropdown-menu > .dropdown .show').removeClass("show");
+      });
+      return false;
+    });
+  </script>
+</body>
+
+</html>

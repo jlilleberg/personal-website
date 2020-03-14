@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Visualizations</title>
+  </head>
+  <body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle" style="color: white;">Important: Plot Explanations</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" style="background-color: white;">
+            The following descriptions below explain the types of plots and the information they convey. Please note that some interactive visualizations take longer than others to render.<br/><br/>
+
+             LDA Topics: Latent Dirichlet Allocation (LDA) is an example of topic model and is used to classify text in a document to a particular topic. It builds a topic per document model and words per topic model, modeled as Dirichlet distributions.<br/><br/>
+
+             Term Associations: Compares the term associations between two entities<br/><br/>
+
+             Empaths: Compares Empath topics and categories between two entities<br/><br/>
+
+             Term Frequency: Compares the frequency of terms between two entities<br/><br/>
+
+             Topic Frequency: Compares the frequency of topics between two entities<br/><br/>
+
+             Word Similarity: Compares the word similiarities between two entities<br/><br/>
+
+
+          </div>
+          <div class="modal-footer" style="display: flex; align-items: center; justify-content: center;">
+            <button type="button" class="btn btn-info" data-dismiss="modal"> Understood </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <a id="back-btn-id" href="../presidential_project_index.html"><button type="button" class="btn btn-danger btn-md back-btn" style="background-color: #B42033;">Back</button></a>
+    </nav>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item">
+          <p id="displayed_plot" class="navbar-brand mb-0 h1">Select a plot</p>
+        </li>
+      </ul>
+    </nav>
+
+     <!-- First Corpus -->
+    <nav id="first-corpus" class="navbar navbar-expand-lg navbar-dark bg-dark curr-corpus">
+      <a id="nav-political-era-1" class="navbar-brand disable-pointer" href="#">First Party System (1792–1824)</a>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav nav-pills nav-fill nav-btn-width">
+
+          <li class="nav-item dropdown">
+            <a id="political-era-1" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Political Era</a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text disabled" href="#">First Party System (1792–1824)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(2)">Second Party System (1828–1854)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(3)">Third Party System (1854–1895)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(4)">Fourth Party System (1896–1932)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(5)">Fifth Party System (1932–1964)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(6)">Sixth Party System (1964–present)</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="lda-topics-1" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LDA Topics</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Thomas Jefferson','first_corpus/LDA/first_corpus_Thomas Jefferson_LDA_visualization.html')">Thomas Jefferson</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for John Quincy Adams','first_corpus/LDA/first_corpus_John Quincy Adams_LDA_visualization.html')">John Quincy Adams</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Federalist Party','first_corpus/LDA/first_corpus_Federalistparty_LDA_visualization.html')">Federalist Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Democratic-Republican Party','first_corpus/LDA/first_corpus_Democratic-Republicanparty_LDA_visualization.html')">Democratic-Republican Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Unaffiliated Party','first_corpus/LDA/first_corpus_Unaffiliatedparty_LDA_visualization.html')">Unaffiliated Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for John Adams','first_corpus/LDA/first_corpus_John Adams_LDA_visualization.html')">John Adams</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for James Madison','first_corpus/LDA/first_corpus_James Madison_LDA_visualization.html')">James Madison</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for George Washington','first_corpus/LDA/first_corpus_George Washington_LDA_visualization.html')">George Washington</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for First Party System (1792–1824)','first_corpus/LDA/first_corpus_LDA_visualization.html')">First Party System (1792–1824)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for James Monroe','first_corpus/LDA/first_corpus_James Monroe_LDA_visualization.html')">James Monroe</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-associations-1" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Associations</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Federalists and Democratic-Republicans','first_corpus/Term Associations/first_corpus_Federalist_Democratic-Republican_term_associations_visualization.html')">Federalists and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Unaffiliated and Democratic-Republicans','first_corpus/Term Associations/first_corpus_Unaffiliated_Democratic-Republican_term_associations_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Unaffiliated and Federalists','first_corpus/Term Associations/first_corpus_Unaffiliated_Federalist_term_associations_visualization.html')">Unaffiliated and Federalists</a>  
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="empaths-1" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Empaths</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Federalists and Democratic-Republicans','first_corpus/Empaths/first_corpus_Federalist_Democratic-Republican_empath_topics_visualization.html')">Federalists and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Unaffiliated and Federalists','first_corpus/Empaths/first_corpus_Unaffiliated_Federalist_empath_topics_visualization.html')">Unaffiliated and Federalists</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Unaffiliated and Democratic-Republicans','first_corpus/Empaths/first_corpus_Unaffiliated_Democratic-Republican_empath_topics_visualization.html')">Unaffiliated and Democratic-Republicans</a>   
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-frequency-1" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Unaffiliated and Federalists','first_corpus/Term Frequency/first_corpus_Unaffiliated_Federalist_term_frequency_visualization.html')">Unaffiliated and Federalists</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Unaffiliated and Democratic-Republicans','first_corpus/Term Frequency/first_corpus_Unaffiliated_Democratic-Republican_term_frequency_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Federalists and Democratic-Republicans','first_corpus/Term Frequency/first_corpus_Federalist_Democratic-Republican_term_frequency_visualization.html')">Federalists and Democratic-Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="topic-frequency-1" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Topic Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Unaffiliated and Federalists','first_corpus/Topic Frequency/first_corpus_Unaffiliated_Federalist_topic_frequency_word_similarity_visualization.html')">Unaffiliated and Federalists</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Federalists and Democratic-Republicans','first_corpus/Topic Frequency/first_corpus_Federalist_Democratic-Republican_topic_frequency_word_similarity_visualization.html')">Federalists and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Unaffiliated and Democratic-Republicans','first_corpus/Topic Frequency/first_corpus_Unaffiliated_Democratic-Republican_topic_frequency_word_similarity_visualization.html')">Unaffiliated and Democratic-Republicans</a>  
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="word-similarity-1" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Word Similarity</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Unaffiliated and Federalists','first_corpus/Word Similarity/first_corpus_Unaffiliated_Federalist_word_similarity_plot_visualization.html')">Unaffiliated and Federalists</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Federalists and Democratic-Republicans','first_corpus/Word Similarity/first_corpus_Federalist_Democratic-Republican_word_similarity_plot_visualization.html')">Federalists and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Unaffiliated and Democratic-Republicans','first_corpus/Word Similarity/first_corpus_Unaffiliated_Democratic-Republican_word_similarity_plot_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Second Corpus -->
+    <nav id="second-corpus" class="navbar navbar-expand-lg navbar-dark bg-dark invisible position-absolute">
+      <a id="nav-political-era-2" class="navbar-brand disable-pointer" href="#">Second Party System (1828–1854)</a>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav nav-pills nav-fill nav-btn-width">
+
+          <li class="nav-item dropdown">
+            <a id="political-era-2" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Political Era</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(1)">First Party System (1792–1824)</a>
+              <a class="dropdown-item drop-drop-text disabled" href="#">Second Party System (1828–1854)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(3)">Third Party System (1854–1895)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(4)">Fourth Party System (1896–1932)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(5)">Fifth Party System (1932–1964)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(6)">Sixth Party System (1964–present)</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item drop-drop-text" href="#">Separated link</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="lda-topics-2" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LDA Topics</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Millard Fillmore','second_corpus/LDA/second_corpus_Millard Fillmore_LDA_visualization.html')">Millard Fillmore</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Martin Van Buren','second_corpus/LDA/second_corpus_Martin Van Buren_LDA_visualization.html')">Martin Van Buren</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Whig Party','second_corpus/LDA/second_corpus_Whigparty_LDA_visualization.html')">Whig Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Republican Party','second_corpus/LDA/second_corpus_Republicanparty_LDA_visualization.html')">Republican Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for John Tyler','second_corpus/LDA/second_corpus_John Tyler_LDA_visualization.html')">John Tyler</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Abraham Lincoln','second_corpus/LDA/second_corpus_Abraham Lincoln_LDA_visualization.html')">Abraham Lincoln</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Unaffiliated Party','second_corpus/LDA/second_corpus_Unaffiliatedparty_LDA_visualization.html')">Unaffiliated Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for James K. Polk','second_corpus/LDA/second_corpus_James K. Polk_LDA_visualization.html')">James K. Polk</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for John Quincy Adams','second_corpus/LDA/second_corpus_John Quincy Adams_LDA_visualization.html')">John Quincy Adams</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Zachary Taylor','second_corpus/LDA/second_corpus_Zachary Taylor_LDA_visualization.html')">Zachary Taylor</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Second Party System (1828–1854)','second_corpus/LDA/second_corpus_LDA_visualization.html')">Second Party System (1828–1854)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Andrew Jackson','second_corpus/LDA/second_corpus_Andrew Jackson_LDA_visualization.html')">Andrew Jackson</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Democratic Party','second_corpus/LDA/second_corpus_Democraticparty_LDA_visualization.html')">Democratic Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for William Harrison','second_corpus/LDA/second_corpus_William Harrison_LDA_visualization.html')">William Harrison</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Democratic-Republican Party','second_corpus/LDA/second_corpus_Democratic-Republicanparty_LDA_visualization.html')">Democratic-Republican Party</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-associations-2" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Associations</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratics and Whigs','second_corpus/Term Associations/second_corpus_Democratic_Whig_term_associations_visualization.html')">Democratics and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratics and Republicans','second_corpus/Term Associations/second_corpus_Democratic_Republican_term_associations_visualization.html')">Democratics and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratics and Democratic-Republicans','second_corpus/Term Associations/second_corpus_Democratic_Democratic-Republican_term_associations_visualization.html')">Democratics and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Unaffiliated and Whigs','second_corpus/Term Associations/second_corpus_Unaffiliated_Whig_term_associations_visualization.html')">Unaffiliated and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Unaffiliated and Republicans','second_corpus/Term Associations/second_corpus_Unaffiliated_Republican_term_associations_visualization.html')">Unaffiliated and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Republicans and Whigs','second_corpus/Term Associations/second_corpus_Republican_Whig_term_associations_visualization.html')">Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratic-Republicans and Whigs','second_corpus/Term Associations/second_corpus_Democratic-Republican_Whig_term_associations_visualization.html')">Democratic-Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Republicans and Democratic-Republicans','second_corpus/Term Associations/second_corpus_Republican_Democratic-Republican_term_associations_visualization.html')">Republicans and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Unaffiliated and Democratic-Republicans','second_corpus/Term Associations/second_corpus_Unaffiliated_Democratic-Republican_term_associations_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Unaffiliated and Democratics','second_corpus/Term Associations/second_corpus_Unaffiliated_Democratic_term_associations_visualization.html')">Unaffiliated and Democratics</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="empaths-2" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Empaths</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratics and Republicans','second_corpus/Empaths/second_corpus_Democratic_Republican_empath_topics_visualization.html')">Democratics and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratics and Democratic-Republicans','second_corpus/Empaths/second_corpus_Democratic_Democratic-Republican_empath_topics_visualization.html')">Democratics and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Unaffiliated and Democratic-Republicans','second_corpus/Empaths/second_corpus_Unaffiliated_Democratic-Republican_empath_topics_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Republicans and Whigs','second_corpus/Empaths/second_corpus_Republican_Whig_empath_topics_visualization.html')">Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratics and Whigs','second_corpus/Empaths/second_corpus_Democratic_Whig_empath_topics_visualization.html')">Democratics and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Unaffiliated and Whigs','second_corpus/Empaths/second_corpus_Unaffiliated_Whig_empath_topics_visualization.html')">Unaffiliated and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Republicans and Democratic-Republicans','second_corpus/Empaths/second_corpus_Republican_Democratic-Republican_empath_topics_visualization.html')">Republicans and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Unaffiliated and Republicans','second_corpus/Empaths/second_corpus_Unaffiliated_Republican_empath_topics_visualization.html')">Unaffiliated and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratic-Republicans and Whigs','second_corpus/Empaths/second_corpus_Democratic-Republican_Whig_empath_topics_visualization.html')">Democratic-Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Unaffiliated and Democratics','second_corpus/Empaths/second_corpus_Unaffiliated_Democratic_empath_topics_visualization.html')">Unaffiliated and Democratics</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-frequency-2" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratic-Republicans and Whigs','second_corpus/Term Frequency/second_corpus_Democratic-Republican_Whig_term_frequency_visualization.html')">Democratic-Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Unaffiliated and Republicans','second_corpus/Term Frequency/second_corpus_Unaffiliated_Republican_term_frequency_visualization.html')">Unaffiliated and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratics and Whigs','second_corpus/Term Frequency/second_corpus_Democratic_Whig_term_frequency_visualization.html')">Democratics and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratics and Democratic-Republicans','second_corpus/Term Frequency/second_corpus_Democratic_Democratic-Republican_term_frequency_visualization.html')">Democratics and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Unaffiliated and Democratic-Republicans','second_corpus/Term Frequency/second_corpus_Unaffiliated_Democratic-Republican_term_frequency_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratics and Republicans','second_corpus/Term Frequency/second_corpus_Democratic_Republican_term_frequency_visualization.html')">Democratics and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Unaffiliated and Democratics','second_corpus/Term Frequency/second_corpus_Unaffiliated_Democratic_term_frequency_visualization.html')">Unaffiliated and Democratics</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Unaffiliated and Whigs','second_corpus/Term Frequency/second_corpus_Unaffiliated_Whig_term_frequency_visualization.html')">Unaffiliated and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Republicans and Democratic-Republicans','second_corpus/Term Frequency/second_corpus_Republican_Democratic-Republican_term_frequency_visualization.html')">Republicans and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Republicans and Whigs','second_corpus/Term Frequency/second_corpus_Republican_Whig_term_frequency_visualization.html')">Republicans and Whigs</a> 
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="topic-frequency-2" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Topic Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Unaffiliated and Democratics','second_corpus/Topic Frequency/second_corpus_Unaffiliated_Democratic_topic_frequency_word_similarity_visualization.html')">Unaffiliated and Democratics</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratic-Republicans and Whigs','second_corpus/Topic Frequency/second_corpus_Democratic-Republican_Whig_topic_frequency_word_similarity_visualization.html')">Democratic-Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Republicans and Whigs','second_corpus/Topic Frequency/second_corpus_Republican_Whig_topic_frequency_word_similarity_visualization.html')">Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratics and Republicans','second_corpus/Topic Frequency/second_corpus_Democratic_Republican_topic_frequency_word_similarity_visualization.html')">Democratics and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Unaffiliated and Democratic-Republicans','second_corpus/Topic Frequency/second_corpus_Unaffiliated_Democratic-Republican_topic_frequency_word_similarity_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratics and Democratic-Republicans','second_corpus/Topic Frequency/second_corpus_Democratic_Democratic-Republican_topic_frequency_word_similarity_visualization.html')">Democratics and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Unaffiliated and Republicans','second_corpus/Topic Frequency/second_corpus_Unaffiliated_Republican_topic_frequency_word_similarity_visualization.html')">Unaffiliated and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Unaffiliated and Whigs','second_corpus/Topic Frequency/second_corpus_Unaffiliated_Whig_topic_frequency_word_similarity_visualization.html')">Unaffiliated and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratics and Whigs','second_corpus/Topic Frequency/second_corpus_Democratic_Whig_topic_frequency_word_similarity_visualization.html')">Democratics and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Republicans and Democratic-Republicans','second_corpus/Topic Frequency/second_corpus_Republican_Democratic-Republican_topic_frequency_word_similarity_visualization.html')">Republicans and Democratic-Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="word-similarity-2" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Word Similarity</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Unaffiliated and Republicans','second_corpus/Word Similarity/second_corpus_Unaffiliated_Republican_word_similarity_plot_visualization.html')">Unaffiliated and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Unaffiliated and Democratic-Republicans','second_corpus/Word Similarity/second_corpus_Unaffiliated_Democratic-Republican_word_similarity_plot_visualization.html')">Unaffiliated and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratics and Republicans','second_corpus/Word Similarity/second_corpus_Democratic_Republican_word_similarity_plot_visualization.html')">Democratics and Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratic-Republicans and Whigs','second_corpus/Word Similarity/second_corpus_Democratic-Republican_Whig_word_similarity_plot_visualization.html')">Democratic-Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Unaffiliated and Democratics','second_corpus/Word Similarity/second_corpus_Unaffiliated_Democratic_word_similarity_plot_visualization.html')">Unaffiliated and Democratics</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratics and Democratic-Republicans','second_corpus/Word Similarity/second_corpus_Democratic_Democratic-Republican_word_similarity_plot_visualization.html')">Democratics and Democratic-Republicans</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Republicans and Whigs','second_corpus/Word Similarity/second_corpus_Republican_Whig_word_similarity_plot_visualization.html')">Republicans and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratics and Whigs','second_corpus/Word Similarity/second_corpus_Democratic_Whig_word_similarity_plot_visualization.html')">Democratics and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Unaffiliated and Whigs','second_corpus/Word Similarity/second_corpus_Unaffiliated_Whig_word_similarity_plot_visualization.html')">Unaffiliated and Whigs</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Republicans and Democratic-Republicans','second_corpus/Word Similarity/second_corpus_Republican_Democratic-Republican_word_similarity_plot_visualization.html')">Republicans and Democratic-Republicans</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Third Corpus -->
+    <nav id="third-corpus" class="navbar navbar-expand-lg navbar-dark bg-dark invisible position-absolute">
+      <a id="nav-political-era-3" class="navbar-brand disable-pointer" href="#">Third Party System (1854–1895)</a>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav nav-pills nav-fill nav-btn-width">
+
+          <li class="nav-item dropdown">
+            <a id="political-era-3" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Political Era</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(1)">First Party System (1792–1824)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(2)">Second Party System (1828–1854)</a>
+              <a class="dropdown-item drop-drop-text disabled" href="#">Third Party System (1854–1895)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(4)">Fourth Party System (1896–1932)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(5)">Fifth Party System (1932–1964)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(6)">Sixth Party System (1964–present)</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item drop-drop-text" href="#">Separated link</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="lda-topics-3" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LDA Topics</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Andrew Johnson','third_corpus/LDA/third_corpus_Andrew Johnson_LDA_visualization.html')">Andrew Johnson</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Ulysses S. Grant','third_corpus/LDA/third_corpus_Ulysses S. Grant_LDA_visualization.html')">Ulysses S. Grant</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Democratic Party','third_corpus/LDA/third_corpus_Democraticparty_LDA_visualization.html')">Democratic Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Franklin Pierce','third_corpus/LDA/third_corpus_Franklin Pierce_LDA_visualization.html')">Franklin Pierce</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Republican Party','third_corpus/LDA/third_corpus_Republicanparty_LDA_visualization.html')">Republican Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for James Buchanan','third_corpus/LDA/third_corpus_James Buchanan_LDA_visualization.html')">James Buchanan</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Abraham Lincoln','third_corpus/LDA/third_corpus_Abraham Lincoln_LDA_visualization.html')">Abraham Lincoln</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Benjamin Harrison','third_corpus/LDA/third_corpus_Benjamin Harrison_LDA_visualization.html')">Benjamin Harrison</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Grover Cleveland','third_corpus/LDA/third_corpus_Grover Cleveland_LDA_visualization.html')">Grover Cleveland</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Chester A. Arthur','third_corpus/LDA/third_corpus_Chester A. Arthur_LDA_visualization.html')">Chester A. Arthur</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for James A. Garfield','third_corpus/LDA/third_corpus_James A. Garfield_LDA_visualization.html')">James A. Garfield</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Rutherford B. Hayes','third_corpus/LDA/third_corpus_Rutherford B. Hayes_LDA_visualization.html')">Rutherford B. Hayes</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Third Party System (1854–1895)','third_corpus/LDA/third_corpus_LDA_visualization.html')">Third Party System (1854–1895)</a> 
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-associations-3" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Associations</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratics and Republicans','third_corpus/Term Associations/third_corpus_Democratic_Republican_term_associations_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="empaths-3" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Empaths</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratics and Republicans','third_corpus/Empaths/third_corpus_Democratic_Republican_empath_topics_visualization.html')">Democratics and Republicans</a> 
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-frequency-3" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratics and Republicans','third_corpus/Term Frequency/third_corpus_Democratic_Republican_term_frequency_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="topic-frequency-3" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Topic Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratics and Republicans','third_corpus/Topic Frequency/third_corpus_Democratic_Republican_topic_frequency_word_similarity_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="word-similarity-3" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Word Similarity</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratics and Republicans','third_corpus/Word Similarity/third_corpus_Democratic_Republican_word_similarity_plot_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Fourth Corpus -->
+    <nav id="fourth-corpus" class="navbar navbar-expand-lg navbar-dark bg-dark invisible position-absolute">
+      <a id="nav-political-era-4" class="navbar-brand disable-pointer" href="#">Fourth Party System (1896–1932)</a>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav nav-pills nav-fill nav-btn-width">
+
+          <li class="nav-item dropdown">
+            <a id="political-era-4" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Political Era</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(1)">First Party System (1792–1824)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(2)">Second Party System (1828–1854)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(3)">Third Party System (1854–1895)</a>
+              <a class="dropdown-item drop-drop-text disabled" href="#">Fourth Party System (1896–1932)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(5)">Fifth Party System (1932–1964)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(6)">Sixth Party System (1964–present)</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item drop-drop-text" href="#">Separated link</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="lda-topics-4" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LDA Topics</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Theodore Roosevelt','fourth_corpus/LDA/fourth_corpus_Theodore Roosevelt_LDA_visualization.html')">Theodore Roosevelt</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Democratic Party','fourth_corpus/LDA/fourth_corpus_Democraticparty_LDA_visualization.html')">Democratic Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for William Taft','fourth_corpus/LDA/fourth_corpus_William Taft_LDA_visualization.html')">William Taft</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Republican Party','fourth_corpus/LDA/fourth_corpus_Republicanparty_LDA_visualization.html')">Republican Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Fourth Party System (1896–1932)','fourth_corpus/LDA/fourth_corpus_LDA_visualization.html')">Fourth Party System (1896–1932)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for William McKinley','fourth_corpus/LDA/fourth_corpus_William McKinley_LDA_visualization.html')">William McKinley</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Herbert Hoover','fourth_corpus/LDA/fourth_corpus_Herbert Hoover_LDA_visualization.html')">Herbert Hoover</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Warren G. Harding','fourth_corpus/LDA/fourth_corpus_Warren G. Harding_LDA_visualization.html')">Warren G. Harding</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Calvin Coolidge','fourth_corpus/LDA/fourth_corpus_Calvin Coolidge_LDA_visualization.html')">Calvin Coolidge</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Woodrow Wilson','fourth_corpus/LDA/fourth_corpus_Woodrow Wilson_LDA_visualization.html')">Woodrow Wilson</a>  
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-associations-4" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Associations</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratics and Republicans','fourth_corpus/Term Associations/fourth_corpus_Democratic_Republican_term_associations_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="empaths-4" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Empaths</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratics and Republicans','fourth_corpus/Empaths/fourth_corpus_Democratic_Republican_empath_topics_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-frequency-4" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratics and Republicans','fourth_corpus/Term Frequency/fourth_corpus_Democratic_Republican_term_frequency_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="topic-frequency-4" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Topic Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratics and Republicans','fourth_corpus/Topic Frequency/fourth_corpus_Democratic_Republican_topic_frequency_word_similarity_visualization.html')">Democratics and Republicans</a>  
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="word-similarity-4" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Word Similarity</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratics and Republicans','fourth_corpus/Word Similarity/fourth_corpus_Democratic_Republican_word_similarity_plot_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Fifth Corpus -->
+    <nav id="fifth-corpus" class="navbar navbar-expand-lg navbar-dark bg-dark invisible position-absolute">
+      <a id="nav-political-era-5" class="navbar-brand disable-pointer" href="#">Fifth Party System (1932–1964)</a>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav nav-pills nav-fill nav-btn-width">
+
+          <li class="nav-item dropdown">
+            <a id="political-era-5" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Political Era</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(1)">First Party System (1792–1824)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(2)">Second Party System (1828–1854)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(3)">Third Party System (1854–1895)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(4)">Fourth Party System (1896–1932)</a>
+              <a class="dropdown-item drop-drop-text disabled" href="#">Fifth Party System (1932–1964)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(6)">Sixth Party System (1964–present)</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item drop-drop-text" href="#">Separated link</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="lda-topics-5" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LDA Topics</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Lyndon B. Johnson','fifth_corpus/LDA/fifth_corpus_Lyndon B. Johnson_LDA_visualization.html')">Lyndon B. Johnson</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Dwight D. Eisenhower','fifth_corpus/LDA/fifth_corpus_Dwight D. Eisenhower_LDA_visualization.html')">Dwight D. Eisenhower</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Harry S. Truman','fifth_corpus/LDA/fifth_corpus_Harry S. Truman_LDA_visualization.html')">Harry S. Truman</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Fifth Party System (1932–1964)','fifth_corpus/LDA/fifth_corpus_LDA_visualization.html')">Fifth Party System (1932–1964)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Franklin D. Roosevelt','fifth_corpus/LDA/fifth_corpus_Franklin D. Roosevelt_LDA_visualization.html')">Franklin D. Roosevelt</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Democratic Party','fifth_corpus/LDA/fifth_corpus_Democraticparty_LDA_visualization.html')">Democratic Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Richard M. Nixon','fifth_corpus/LDA/fifth_corpus_Richard M. Nixon_LDA_visualization.html')">Richard M. Nixon</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Republican Party','fifth_corpus/LDA/fifth_corpus_Republicanparty_LDA_visualization.html')">Republican Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for John F. Kennedy','fifth_corpus/LDA/fifth_corpus_John F. Kennedy_LDA_visualization.html')">John F. Kennedy</a> 
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-associations-5" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Associations</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratics and Republicans','fifth_corpus/Term Associations/fifth_corpus_Democratic_Republican_term_associations_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="empaths-5" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Empaths</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratics and Republicans','fifth_corpus/Empaths/fifth_corpus_Democratic_Republican_empath_topics_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-frequency-5" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratics and Republicans','fifth_corpus/Term Frequency/fifth_corpus_Democratic_Republican_term_frequency_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="topic-frequency-5" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Topic Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratics and Republicans','fifth_corpus/Topic Frequency/fifth_corpus_Democratic_Republican_topic_frequency_word_similarity_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="word-similarity-5" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Word Similarity</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratics and Republicans','fifth_corpus/Word Similarity/fifth_corpus_Democratic_Republican_word_similarity_plot_visualization.html')">Democratics and Republicans</a> 
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Sixth Corpus -->
+    <nav id="sixth-corpus" class="navbar navbar-expand-lg navbar-dark bg-dark invisible position-absolute">
+      <a id="nav-political-era-6" class="navbar-brand disable-pointer" href="#">Sixth Party System (1964–present)</a>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav nav-pills nav-fill nav-btn-width">
+
+          <li class="nav-item dropdown">
+            <a id="political-era-6" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Political Era</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(1)">First Party System (1792–1824)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(2)">Second Party System (1828–1854)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(3)">Third Party System (1854–1895)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(4)">Fourth Party System (1896–1932)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="selectCorpus(5)">Fifth Party System (1932–1964)</a>
+              <a class="dropdown-item drop-drop-text disabled" href="#">Sixth Party System (1964–present)</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item drop-drop-text" href="#">Separated link</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="lda-topics-6" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">LDA Topics</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Democratic Party','sixth_corpus/LDA/sixth_corpus_Democraticparty_LDA_visualization.html')">Democratic Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Jimmy Carter','sixth_corpus/LDA/sixth_corpus_Jimmy Carter_LDA_visualization.html')">Jimmy Carter</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Lyndon B. Johnson','sixth_corpus/LDA/sixth_corpus_Lyndon B. Johnson_LDA_visualization.html')">Lyndon B. Johnson</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Bill Clinton','sixth_corpus/LDA/sixth_corpus_Bill Clinton_LDA_visualization.html')">Bill Clinton</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Chester A. Arthur','sixth_corpus/LDA/sixth_corpus_Chester A. Arthur_LDA_visualization.html')">Chester A. Arthur</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Richard M. Nixon','sixth_corpus/LDA/sixth_corpus_Richard M. Nixon_LDA_visualization.html')">Richard M. Nixon</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Sixth Party System (1964–present)','sixth_corpus/LDA/sixth_corpus_LDA_visualization.html')">Sixth Party System (1964–present)</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for George W. Bush','sixth_corpus/LDA/sixth_corpus_George W. Bush_LDA_visualization.html')">George W. Bush</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Republican Party','sixth_corpus/LDA/sixth_corpus_Republicanparty_LDA_visualization.html')">Republican Party</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Ronald Reagan','sixth_corpus/LDA/sixth_corpus_Ronald Reagan_LDA_visualization.html')">Ronald Reagan</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Gerald Ford','sixth_corpus/LDA/sixth_corpus_Gerald Ford_LDA_visualization.html')">Gerald Ford</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Donald Trump','sixth_corpus/LDA/sixth_corpus_Donald Trump_LDA_visualization.html')">Donald Trump</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for George H. W. Bush','sixth_corpus/LDA/sixth_corpus_George H. W. Bush_LDA_visualization.html')">George H. W. Bush</a>
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('LDA Plot for Barack Obama','sixth_corpus/LDA/sixth_corpus_Barack Obama_LDA_visualization.html')">Barack Obama</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-associations-6" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Associations</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Associations Plot for Democratics and Republicans','sixth_corpus/Term Associations/sixth_corpus_Democratic_Republican_term_associations_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="empaths-6" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Empaths</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Empaths Plot for Democratics and Republicans','sixth_corpus/Empaths/sixth_corpus_Democratic_Republican_empath_topics_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="term-frequency-6" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Term Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Term Frequency Plot for Democratics and Republicans','sixth_corpus/Term Frequency/sixth_corpus_Democratic_Republican_term_frequency_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="topic-frequency-6" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Topic Frequency</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Topic Frequency Plot for Democratics and Republicans','sixth_corpus/Topic Frequency/sixth_corpus_Democratic_Republican_topic_frequency_word_similarity_visualization.html')">Democratics and Republicans</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a id="word-similarity-6" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Word Similarity</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item drop-drop-text" href="#" onClick="newVisualization('Word Similarity Plot for Democratics and Republicans','sixth_corpus/Word Similarity/sixth_corpus_Democratic_Republican_word_similarity_plot_visualization.html')">Democratics and Republicans</a>  
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <!-- iFrame -->
+    <div id="iframe-plot" class="iframe-plot"> 
+      <iframe id="iframe" class="iframe" src='about:blank' onload="onMyFrameLoad();"></iframe>
+    </div>
+
+    <!-- Loading Animation Bars -->
+    <div id="loading-container" class="preloader-1" style="margin-left: 43vw; margin-top: -80vh; position: absolute;">
+      <div class="loading-div" >Loading</div>
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+      <span class="line line-4"></span>
+      <span class="line line-5"></span>
+      <span class="line line-6"></span>
+      <span class="line line-7"></span>
+      <span class="line line-8"></span>
+      <span class="line line-9"></span>
+      <span class="line line-10"></span>
+      <span class="line line-11"></span>
+      <span class="line line-12"></span>
+      <span class="line line-13"></span>
+      <span class="line line-14"></span>
+      <span class="line line-15"></span>
+      <span class="line line-16"></span>
+      <span class="line line-17"></span>
+      <span class="line line-18"></span>
+      <span class="line line-19"></span>
+      <span class="line line-20"></span>
+      <span class="line line-21"></span>
+      <span class="line line-22"></span>
+      <span class="line line-23"></span>
+      <span class="line line-24"></span>
+      <span class="line line-25"></span>
+      <span class="line line-26"></span>
+      <span class="line line-27"></span>
+      <span class="line line-28"></span>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script>
+
+
+      var displayed_corpus = 1;
+
+      $('#loading-container').addClass('animate-opacity-0-instant'); 
+
+      $.each( [2,3,4,5,6], function(index, value ) {
+        var current_corpus_value = value; 
+        $.each( ['#nav-political-era-', '#political-era-', '#lda-topics-', '#term-associations-', '#empaths-', '#term-frequency-', '#topic-frequency-', '#word-similarity-'], function( index, value ){
+            curr_id = value.concat(current_corpus_value.toString(10));
+            $(curr_id).addClass('disable-pointer');
+            $(curr_id).addClass('animate-opacity-0');
+        });
+
+      });
+
+
+      $(document).ready(function(){
+        $('#modal-info').modal('show'); 
+      });
+      
+
+      var myConfObj = {
+        iframeMouseOver : false
+      }
+
+      window.addEventListener('blur',function(){
+        if(myConfObj.iframeMouseOver){
+          $( ".navbar" ).click();
+        }
+      });
+
+      document.getElementById('iframe').addEventListener('mouseover',function(){
+         myConfObj.iframeMouseOver = true;
+      });
+
+      document.getElementById('navbar').addEventListener('mouseout',function(){
+          myConfObj.iframeMouseOver = false;
+      });
+      
+
+
+
+      // Displays plot in iframe
+      function newVisualization(display, plot) {
+
+          $('#back-btn-id').addClass('disable-pointer');
+          
+          $('#iframe-plot').removeClass('animate-opacity-1');
+          $('#iframe-plot').addClass('animate-opacity-0');
+          $('#displayed_plot').addClass('animate-opacity-0');
+
+          $.each( ['#nav-political-era-', '#political-era-', '#lda-topics-', '#term-associations-', '#empaths-', '#term-frequency-', '#topic-frequency-', '#word-similarity-'], function( index, value ){
+            curr_id = value.concat(displayed_corpus.toString(10));
+            $(curr_id).addClass('disable-pointer');
+          });
+          
+
+          setTimeout(function () {
+            $('#loading-container').removeClass('animate-opacity-0-instant'); 
+             $('#loading-container').removeClass('animate-opacity-0');  
+             $('#loading-container').addClass('animate-opacity-1');
+             setTimeout(function () {
+                 document.getElementById('iframe').src = plot
+                 document.getElementById('displayed_plot').innerHTML = display         
+              }, 500);     
+          }, 500); 
+      }
+
+      function onMyFrameLoad() {
+        $('#loading-container').removeClass('animate-opacity-1');
+        $('#loading-container').addClass('animate-opacity-0');
+        setTimeout(function () {
+           $('#iframe-plot').removeClass('animate-opacity-0');  
+           $('#iframe-plot').addClass('animate-opacity-1');  
+           $('#displayed_plot').removeClass('animate-opacity-0');  
+           $('#displayed_plot').addClass('animate-opacity-1');  
+
+
+           $.each( ['#nav-political-era-', '#political-era-', '#lda-topics-', '#term-associations-', '#empaths-', '#term-frequency-', '#topic-frequency-', '#word-similarity-'], function( index, value ){
+              curr_id = value.concat(displayed_corpus.toString(10));
+              $(curr_id).removeClass('disable-pointer');
+            });  
+             
+           $('#back-btn-id').removeClass('disable-pointer');
+        }, 500);
+      }
+
+      
+
+      // Displays current political area navbar
+      function selectCorpus(corpus) {
+
+        $('#back-btn-id').addClass('disable-pointer');        
+
+        var number2string = {
+          1: "#first-corpus",
+          2: "#second-corpus",
+          3: "#third-corpus",
+          4: "#fourth-corpus",
+          5: "#fifth-corpus",
+          6: "#sixth-corpus"
+        };
+
+        // Find currently displayed corpus
+        var current_corpus;
+        $.each( ['#first-corpus','#second-corpus','#third-corpus','#fourth-corpus', '#fifth-corpus', '#sixth-corpus'], function( index, value ){
+            if( $(value).hasClass("curr-corpus") ) {
+                current_corpus = index + 1;
+            }
+        });
+
+        
+        // Fade Out
+        $.each( ['#nav-political-era-', '#political-era-', '#lda-topics-', '#term-associations-', '#empaths-', '#term-frequency-', '#topic-frequency-', '#word-similarity-'], function( index, value ){
+            curr_id = value.concat(current_corpus.toString(10));
+            $(curr_id).addClass('disable-pointer');
+            $(curr_id).removeClass('animate-opacity-1');
+            $(curr_id).addClass('animate-opacity-0');
+        });
+        
+
+        setTimeout(function () {
+
+          $(number2string[current_corpus]).removeClass("curr-corpus");
+          $(number2string[current_corpus]).addClass("position-absolute");
+          $(number2string[current_corpus]).addClass("invisible");
+
+          // Fade In
+          $(number2string[corpus]).addClass("curr-corpus");
+          $(number2string[corpus]).removeClass( "position-absolute" );
+          $(number2string[corpus]).removeClass( "invisible" );
+          setTimeout(function () {
+            $.each( ['#nav-political-era-', '#political-era-', '#lda-topics-', '#term-associations-', '#empaths-', '#term-frequency-', '#topic-frequency-', '#word-similarity-'], function( index, value ){
+              curr_id = value.concat(corpus.toString(10));
+              $(curr_id).removeClass('disable-pointer');
+              $(curr_id).removeClass('animate-opacity-0');
+              $(curr_id).addClass('animate-opacity-1');
+            });
+
+            displayed_corpus = corpus;
+            $('#back-btn-id').removeClass('disable-pointer');
+            document.getElementById('iframe').src = 'about:blank'
+            document.getElementById('displayed_plot').innerHTML = "Select a Plot"  
+          }, 500);
+
+        }, 500);
+      }
+
+      // Back button
+      function back_btn() {
+
+          window.location.href = "../presidential_project_index.html";
+        }
+
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    
+    <script type="text/javascript" src="js/jquery-1.8.0.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

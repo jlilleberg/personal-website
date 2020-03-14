@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=900, minimal-ui, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1.0, maximum-scale=1.0">
+
+     <link href="css/style.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Presidential Project (NLP)</title>
+  </head>
+  <body class="body">
+    
+
+    <nav class="navbar" style="background-color: #444;"> 
+      <a href="../index.html?disable_scroll_lock=true"><button type="button" class="btn btn-danger btn-md back-btn" style="background-color: #B42033;">Back</button></a>
+    </nav>
+
+    <div class="president-btn-wrapper" style="margin-top: -5vh;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg header-text">
+            <h1 class="text-center header-text-size"> Presidential Speeches NLP Project </h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl description">
+                <br/>
+                Political eras in the United States refer to a model of American politics used in history and political science to periodize the political party system existing in the United States. Political scientists and historians have divided the development of America's two-party system into six eras.
+                <br/><br/>
+                For each political era, I have performed data exploration, sentiment analysis, generated texts using neural networks, topic modeling and text data visualizations. The project is separated into the respective categories stated above where each category contains interactive visualizations to allow further insight and exploration into the data.
+                <br/><br/>
+                Note, I intend to add more neural network generated transcripts at a later time.
+          </div>
+        </div>
+        <div class="cards-wrapper">
+          <div class="row btn-era">
+            <div class="col-3">
+              <div id="card1" class="card card-hover-enable item-blur">
+	                <div class="card-image-data-exploration"></div>
+	                <div class="card-text">
+	                  <span class="date"> Data Exploration </span>
+	                  <p> <br/> Interactive visualizations on the characteristics of presidential transcripts <br/>
+	                </div>
+	                <div class="card-stats card-stats-link card-stats-hover-enabled" onClick="view_project('data_exploration');" style="color: white;">
+	                  <p style="margin-top: 1.3vh">View Project</p>
+	                </div>
+	            </div>
+            </div>
+            <div class="col-3">
+              <div id="card2" class="card card-hover-enable item-blur">
+                  <div class="card-image-sentiment-analysis"></div>
+                  <div class="card-text">
+                    <span class="date"> Sentiment Analysis </span>
+                    <p> <br/> Analysis of emotional and subjective tones of presidential transcripts <br/> </p>
+                  </div>
+                  <div class="card-stats card-stats-link card-stats-hover-enabled" onClick="view_project('sentiment_analysis');" style="color: white;">
+                    <p style="margin-top: 1.3vh">View Project</p>
+                  </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div id="card3" class="card card-hover-enable item-blur">
+	                <div class="card-image-NN"></div>
+	                <div class="card-text">
+	                  <span class="date"> Neural Network Generated Transcripts </span>
+	                  <p> <br/> Artifical transcripts trained on presidential text through deep learning <br/> </p>
+	                </div>
+	                <div class="card-stats card-stats-link card-stats-hover-enabled" onClick="view_project('generated_texts');" style="color: white;">
+	                  <p style="margin-top: 1.3vh">View Project!</p>
+	                </div>
+	            </div>
+            </div>
+            <div class="col-3">
+              <div >
+	            <div id="card4" class="card card-hover-enable item-blur">
+	                <div class="card-image-plots"></div>
+	                <div class="card-text">
+	                  <span class="date"> Text Visualizations </span>
+	                  <p> </br>Visual interactive plots on topic modeling, term associations, empaths, term and topic frequencies, and word similiarities</p>
+	                </div>
+	                <div class="card-stats card-stats-link card-stats-hover-enabled" onClick="view_project('interactive_plots');" style="color: white;">
+	                  <p style="margin-top: 1.3vh">View Project</p>
+	                </div>
+	            </div>
+	          </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script type="text/javascript">
+
+      var siteWidth = 1760;
+      var scale = screen.width / siteWidth;
+
+      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
+
+      window.onresize = function() {
+          document.body.height = window.innerHeight * .9;
+      }
+      window.onresize();
+      
+      function view_project(project) {
+
+        var url_dict = {
+          "interactive_plots": "Visualizations/visualizations.html",
+          "generated_texts": "Generated_Texts/generated_transcripts.html",
+          "sentiment_analysis" : "Sentiment_Analysis/sentiment_analysis.html",
+          "data_exploration" : "Data_Exploration/data_exploration.html"
+        }
+
+        window.location.href = url_dict[project];
+      }
+
+
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
