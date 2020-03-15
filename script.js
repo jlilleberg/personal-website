@@ -793,7 +793,7 @@ window.addEventListener('resize',function(){
       document.getElementById('navbar-projects').click();
       instant_about_page_animate();
       setTimeout(() => {
-        window.scrollBy(0, window.innerHeight / 20);
+        window.scrollBy(0, window.innerHeight / 10);
         enable_scroll();
       }, 1200);
 
