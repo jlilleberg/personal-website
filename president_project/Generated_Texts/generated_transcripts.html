@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -78,6 +79,16 @@
   </script>
     <!-- Optional JavaScript -->
     <script type="text/javascript">
+
+      var siteWidth = 1280;
+      var scale = screen.width / siteWidth;
+
+      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
+
+      window.onresize = function() {
+          document.body.height = window.innerHeight * .9;
+      }
+      window.onresize();
 
       function go_back() {
 
