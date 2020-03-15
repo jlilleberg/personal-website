@@ -743,35 +743,6 @@ window.addEventListener('resize',function(){
     var animation_played = false;
 
 
-     /* Animates the desktop visual */
-    function desktop_animation(duration){
-
-      setTimeout(() => {
-          $('#desktop-wrap').addClass('wrap-animation');
-          var ids = ["#desktop", "#browser-left", "#browser-right", "#cactus", "#coffee_cup"];
-          ids.forEach(function(entry) {
-              
-              switch (entry) {
-                case "#desktop": 
-                  $(entry).addClass('desktop_animation');
-                  break;
-                case "#browser-left":
-                  $(entry).addClass('browser-left-animation');
-                  break;
-                case "#browser-right":
-                  $(entry).addClass('browser-right-animation');
-                  break;
-                case "#cactus":
-                  $(entry).addClass('cactus-animation');
-                  break;
-                case "#coffee_cup":
-                  $(entry).addClass('coffee_cup-animation');
-                  break;
-              }
-          });
-      }, duration);
-    }
-
     /* Animates the bars in the about page */
     function generate_about_p1(){
       $('#p1-upper-bar').css('opacity','1');
@@ -822,6 +793,7 @@ window.addEventListener('resize',function(){
       document.getElementById('navbar-projects').click();
       instant_about_page_animate();
       setTimeout(() => {
+        window.scrollBy(0, window.innerHeight / 20);
         enable_scroll();
       }, 1200);
 
