@@ -821,6 +821,9 @@ window.addEventListener('resize',function(){
       disable_scroll();
       document.getElementById('navbar-projects').click();
       instant_about_page_animate();
+      setTimeout(() => {
+        enable_scroll();
+      }, 1200);
 
       
     }
@@ -935,5 +938,9 @@ window.addEventListener('resize',function(){
       'snow_removal': 'https://drive.google.com/open?id=1QcnCF6nu-QL27bnIbv3E5ELUMeq_XnHW'
       };
 
-      window.open( url_dict[project], '_blank');      
+      if (project == 'presidents-visual'){
+        window.open( url_dict[project], '_self'); 
+      } else {
+        window.open( url_dict[project], '_blank');  
+      }    
     }
