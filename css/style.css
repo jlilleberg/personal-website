@@ -595,18 +595,22 @@ img {
 .footer-wrapper {
   display: grid;
   grid-template-rows: repeat(20, 5vh);
-  grid-template-areas: "email" "email" "email" "email" "email" "email" "email" "email" "email" "email" "email" "email" "email" "email" "nav-top" "blk-strip" "icons" "icons" "c-name" "c-name";
+  grid-template-areas: "email" "email" "email" "email" "email"
+                        "email" "email" "email" "email" "email" 
+                        "email" "email" "email" "email" 
+                        "blk-strip" "blk-strip" "icons" "icons" "c-name" "c-name";
 }
 
 /* FOOTER */
 .footer-wrapper {
-  background-color: #242424;
+  background: #242424;
 }
 .contact-icons {
   grid-area: icons;
   background-color: black;
   display: flex;
   flex-direction: space-evenly;
+  margin-top: 5vh;
 }
 .form-control {
   width: 40vw;
@@ -656,8 +660,14 @@ img {
 }
 .black-strip {
   grid-area: blk-strip;
-  background-color: #1c1c1c;
+  background: #1c1c1c;
+  height: 5vh;
 }
+
+.bottom-footer-container {
+  padding-top: 20vh;
+}
+
 .nav-to-top {
   grid-area: nav-top;
   background-color: #242424;
